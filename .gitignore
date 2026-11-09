@@ -1,0 +1,6 @@
+/target/
+/target-release/
+/installer/target/
+/dist/
+*.log
+*.json.tmp

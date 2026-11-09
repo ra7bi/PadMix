@@ -1,0 +1,33 @@
+[package]
+name = "padmix-setup"
+version = "1.0.0"
+edition = "2021"
+rust-version = "1.87"
+authors = ["ra7bi (Mr.Coder)"]
+license = "MIT"
+description = "PadMix installer: per-user, no admin. Embeds the release PadMix.exe."
+build = "build.rs"
+
+# Standalone: built after PadMix itself (it embeds target/release/padmix.exe).
+[workspace]
+
+[dependencies]
+anyhow = "1"
+windows = { version = "0.58", features = [
+    "Win32_Foundation",
+    "Win32_Security",
+    "Win32_System_Com",
+    "Win32_System_Registry",
+    "Win32_System_Threading",
+    "Win32_UI_Shell",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[build-dependencies]
+embed-resource = "3"
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+strip = true

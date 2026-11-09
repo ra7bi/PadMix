@@ -1,0 +1,3 @@
+# Keep dependency resolution compatible with the installed Rust 1.87 toolchain.
+[resolver]
+incompatible-rust-versions = "fallback"

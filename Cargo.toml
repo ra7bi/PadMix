@@ -1,0 +1,45 @@
+[package]
+name = "padmix"
+version = "1.0.0"
+edition = "2021"
+rust-version = "1.87"
+authors = ["ra7bi (Mr.Coder)"]
+license = "MIT"
+description = "PadMix: free open source soundboard for Windows. Play sounds through your mic in Discord and games."
+build = "build.rs"
+
+[dependencies]
+anyhow = "1"
+cpal = "0.15"
+ringbuf = "0.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+symphonia = { version = "0.5", features = ["mp3", "aac", "isomp4", "wav", "pcm", "flac", "ogg", "vorbis"] }
+rubato = "0.15"
+global-hotkey = "0.6"
+eframe = { version = "0.29", default-features = false, features = ["glow", "default_fonts"] }
+egui = "0.29"
+rfd = "0.15"
+windows = { version = "0.58", features = [
+    "Win32_Foundation",
+    "Win32_System_Com",
+    "Win32_System_Com_StructuredStorage",
+    "Win32_System_Variant",
+    "Win32_Media_Audio",
+    "Win32_Devices_FunctionDiscovery",
+    "Win32_UI_Shell",
+    "Win32_UI_Shell_PropertiesSystem",
+    "Win32_System_Registry",
+    "Win32_Security",
+    "Win32_System_Threading",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[build-dependencies]
+embed-resource = "3"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
